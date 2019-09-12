@@ -157,6 +157,8 @@ $(document).ready(function () {
                     noteList.append(ili);
                 }
                 $("#display-note").append(noteList);
+            } else {
+                $("#display-note").empty();
             }
         });
     });
