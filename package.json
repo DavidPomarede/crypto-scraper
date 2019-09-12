@@ -29,6 +29,8 @@
     "request": "^2.83.0"
   },
   "devDependencies": {
-    "cryptiles": "^4.1.2"
+    "cryptiles": "^4.1.2",
+    "hoek": "^4.2.1",
+    "mpath": "^0.6.0"
   }
 }
