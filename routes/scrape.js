@@ -1,5 +1,4 @@
 var cheerio = require("cheerio");
-// var request = require("request");
 var axios = require("axios");
 var Note = require("../models/Note.js");
 var Article = require("../models/Article.js");
@@ -38,46 +37,6 @@ module.exports = function (app) {
             });
     });
 
-
-
-
-
-
-
-
-
-    // app.get("/scrape", function (req, res) {
-    //     // axios.get("https://www.coindesk.com/").then(function(error, response, html) {
-    //     request("https://www.coindesk.com/", function (error, response, html) {
-
-    //         var $ = cheerio.load(html);
-    //         console.log(response.body);
-    //         $("a.stream-article").each(function (i, element) {
-    //             var result = {};
-    //             result.title = $(element).attr("title");
-    //             result.summary = $(element).children("div.meta").children("p").text();
-    //             result.link = $(element).attr("href");
-
-    //             if (result.title && result.link) {
-    //                 var entry = new Article(result);
-    //                 Article.update(
-    //                     {link: result.link},
-    //                     result,
-    //                     { upsert: true },
-    //                     function (error, doc){
-    //                         if (error) {
-    //                             console.log(error);
-    //                         }
-    //                     }
-    //                 );
-    //             }
-    //         });
-
-
-    //         res.json({"code" : "success"});
-    //     });
-        
-    // });
 
     app.get("/articles", function (req, res) {
         Article.find({}, function (error, doc) {

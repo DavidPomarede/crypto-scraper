@@ -1,6 +1,5 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var request = require("request");
 var axios = require("axios");
 var mongoose = require("mongoose");
 var Note = require("./models/Note.js");
@@ -12,7 +11,7 @@ var path = require("path");
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-// Parse application/x-www-form-urlencoded
+// middleware?
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -20,7 +19,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("./public"));
 
-// connect to database
+// mongoose
 mongoose.Promise = Promise;
 var dbConnect = process.env.MONGODB_URI || "mongodb://localhost/ccnScrape";
 if(process.env.MONGODB_URI) {
@@ -36,6 +35,7 @@ db.on('error',function(err){
 db.once('open', function(){
     console.log("Mongoose connection is successful");
 });
+
 var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({
