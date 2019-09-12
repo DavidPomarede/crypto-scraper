@@ -162,14 +162,13 @@ $(document).ready(function () {
         });
     });
 
-    // When you click the savenote button
+
     $(document).on("click", "#savenote", function () {
-        // Grab the id associated with the article from the submit button
-        // get the user input value 
+
         var thisId = $(this).attr("data-id");
         var text = $("#textarea1").val();
         console.log(thisId);
-        // Run a POST request to change the note, using what's entered in the inputs
+
         $.ajax({
             type: "POST",
             url: "/notes",
@@ -183,9 +182,9 @@ $(document).ready(function () {
             }
         });
     });
-    // delete note button
+
     $(document).on("click", "#deletenote", function () {
-        // Run a DELETE request to change the note, using what's entered in the inputs
+
         $.ajax({
             type: "DELETE",
             url: "/deletenote",
