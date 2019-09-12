@@ -3,81 +3,32 @@
 
 <head>
     <title>CryptoNews Scraper</title>
-    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-    
     <link href="https://fonts.googleapis.com/css?family=Cinzel|Patua+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <script type="text/javascript" src="/javascript/home.js"></script>
     <script type="text/javascript" src="/javascript/saved.js"></script>
-    <script
-        src="https://use.fontawesome.com/releases/v5.1.1/js/all.js"
-        integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a"
-        crossorigin="anonymous"
-    ></script>
+    <script src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="container-fluid">
-        <!-- <nav>
-            <div class="nav-wrapper">
-                <a href="#" class="brand-logo center" id="mainTitle">CryptoNews Scraper</a>
-                <ul class="right hide-on-med-and-down">
-
-                    <li><a href="#" onclick="displaySaved()" class="navItem">Saved Articles</a></li>
-                    <button data-target="scrape-article" class="btn waves-effect waves-light black modal-trigger navItem" onclick="displayScrape()">Scrape Articles</button>
-
-                </ul>
-
-            </div>
-        </nav> -->
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="row justify-content-md-center">
                     <div class="col col-sm-1">
-                <a class="navbar-brand" href="#" id="mainTitle">CryptoNews Scraper</a></div>
-            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button> -->
-            <!-- <div class="collapse navbar-collapse" id="navbarNav"> -->
-                <!-- <ul class="navbar-nav">
-
-                <li class="nav-item"> -->
-                        <div class="col col-sm-1">
-                    <a class="nav-link navItem" onclick="displaySaved()" href="#" padding>Saved Items</a></div>
-                <!-- </li>
-                <li class="nav-item"> --><div class="col col-sm-1">
+                        <a class="navbar-brand" href="#" id="mainTitle">CryptoNews Scraper</a>
+                    </div>
+                    <div class="col col-sm-1">
+                        <a class="nav-link navItem" onclick="displaySaved()" href="#" padding>Saved Items</a>
+                    </div>
+                    <div class="col col-sm-1">
                         <button data-target="scrape-article" class="btn black modal-trigger navItem" onclick="displayScrape()">Scrape Articles</button>
-
-                <!-- </li> -->
-
-                <!-- </ul> -->
-            <!-- </div> -->
                 </div>
             </div>
         </nav>
-
-
-<!-- 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#" id="mainTitle">CryptoNews Scraper</a>
-
-
-                <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link navItem" onclick="displaySaved()" href="#">Saved Articles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link navItem" href="#" onclick="displayScrape()">Scrape Articles</a>
-                </li>
-                </ul>
-
-        </nav> -->
-
 
 
         <div class="row">
@@ -102,7 +53,8 @@
             <div class="col s12 m4 l4" id="ccn-2">
             </div>
         </div>
-        <!-- Modal Structure  for scraping article information-->
+
+        <!-- Modal for scraping article information-->
         <div id="scrape-article" class="modal">
             <div class="modal-content">
                 <h4>Number of Articles Scraped</h4>
@@ -113,7 +65,8 @@
             </div>
         </div>
     </div>
-    <!-- Modal Structure for creating a note -->
+
+    <!-- Modal for creating a note -->
     <div id="notes" class="modal">
         <div class="modal-content">
             <form>
