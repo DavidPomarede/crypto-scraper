@@ -1,4 +1,4 @@
-.nav-wrapper {
+.navbar {
     background-image: url("../images/header.png");
 }
 
@@ -21,6 +21,7 @@ body {
 
 .navItem {
     font-family: 'Patua One', cursive;
+    color: white;
 }
 
 .card-title {

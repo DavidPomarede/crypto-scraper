@@ -1,22 +1,24 @@
 var cheerio = require("cheerio");
-var request = require("request");
+// var request = require("request");
+var axios = require("axios");
 var Note = require("../models/Note.js");
 var Article = require("../models/Article.js");
 var Save = require("../models/Save");
 
 
-module.exports = function (app) {
-    app.get("/scrape", function (req, res) {
-        request("https://www.coindesk.com/", function (error, response, html) {
 
-            var $ = cheerio.load(html);
-            console.log(response.body);
-            $("a.stream-article").each(function (i, element) {
+module.exports = function (app) {
+
+    app.get("/scrape", function(req, res) {
+        axios.get("https://www.coindesk.com/").then(function(response) {
+            var $ = cheerio.load(response.data);
+        
+            $("a.stream-article").each(function(i, element) {
                 var result = {};
                 result.title = $(element).attr("title");
-                result.summary = $(element).children("div.meta").children("p").text();
                 result.link = $(element).attr("href");
-                // result.byline = $("div.post-preview-item-inline__text").children("p.byline").text();
+                result.summary = $(element).children("div.meta").children("p").text();
+        
                 if (result.title && result.link) {
                     var entry = new Article(result);
                     Article.update(
@@ -31,9 +33,51 @@ module.exports = function (app) {
                     );
                 }
             });
+        
             res.json({"code" : "success"});
-        });
+            });
     });
+
+
+
+
+
+
+
+
+
+    // app.get("/scrape", function (req, res) {
+    //     // axios.get("https://www.coindesk.com/").then(function(error, response, html) {
+    //     request("https://www.coindesk.com/", function (error, response, html) {
+
+    //         var $ = cheerio.load(html);
+    //         console.log(response.body);
+    //         $("a.stream-article").each(function (i, element) {
+    //             var result = {};
+    //             result.title = $(element).attr("title");
+    //             result.summary = $(element).children("div.meta").children("p").text();
+    //             result.link = $(element).attr("href");
+
+    //             if (result.title && result.link) {
+    //                 var entry = new Article(result);
+    //                 Article.update(
+    //                     {link: result.link},
+    //                     result,
+    //                     { upsert: true },
+    //                     function (error, doc){
+    //                         if (error) {
+    //                             console.log(error);
+    //                         }
+    //                     }
+    //                 );
+    //             }
+    //         });
+
+
+    //         res.json({"code" : "success"});
+    //     });
+        
+    // });
 
     app.get("/articles", function (req, res) {
         Article.find({}, function (error, doc) {
@@ -75,7 +119,7 @@ module.exports = function (app) {
     app.post("/save", function (req, res) {
         var result = {};
         result.id = req.body._id;
-        result.summary = req.body.summary;
+        // result.summary = req.body.summary;
         result.byline = req.body.byline;
         result.title = req.body.title;
         result.link = req.body.link;

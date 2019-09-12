@@ -36,7 +36,6 @@ function displayScrape() {
                     byline.text(data[i].byline);
                     byline.attr("id", "byline-" + data[i]._id);
                     cardActionDiv.append(byline);
-                    // cardActionDiv.append(button);
                     cardActionDiv.append(saveArticle);
                     mainDiv.append(cardContentDiv);
                     mainDiv.append(cardActionDiv);
@@ -48,7 +47,5 @@ function displayScrape() {
 }
 
 $(document).ready(function () {
-    $('.slider').slider();
-    $(".button-collapse").sideNav();
     $('.modal').modal();
 });
