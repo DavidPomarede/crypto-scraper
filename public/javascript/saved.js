@@ -25,13 +25,13 @@ function displaySaved() {
             var a = $("<a>");
             a.attr("href", data[i].link);
             a.attr("id", "link-" + data[i]._id);
-            a.text("Go to the article");
+            a.html("<i class='fas fa-link'></i>");
             cardActionDiv.append(a);
             var button = $("<a>");
             button.addClass("waves-effect waves-light white btn create-note modal-trigger");
             button.attr("data-id", data[i]._id);
             button.attr("data-target", "notes");
-            button.text("Create Notes");
+            button.text("Notes");
             var deleteArticle = $("<a>");
             deleteArticle.addClass("waves-effect waves-light white btn delete-button");
             deleteArticle.attr("id", data[i]._id);
@@ -115,9 +115,7 @@ $(document).ready(function () {
 
     // create note
     $(document).on("click", ".create-note", function (data) {
-        // alert($(this).attr("data-id"));
         $("#savenote").attr("data-id", $(this).attr("data-id"));
-        // <div id="display-note"></div>
         let aid = $(this).attr("data-id");
         let title = "Notes for the Article: " + aid;
         $("#display-title").empty();
@@ -145,13 +143,14 @@ $(document).ready(function () {
 
                     let adelete = $("<a>");
                     adelete.addClass("secondary-content");
+                    adelete.html("<i class='far fa-trash-alt'></i>");
                     adelete.attr("note-id", data[i]._id);
                     adelete.attr("href", "#");
                     adelete.attr("onclick", 'deletenote("' + data[i]._id + '")');
                     let xdelete = $("<i>");
-                    xdelete.addClass("material-icons");
+                    // xdelete.addClass("material-icons");
                     xdelete.attr("note-id", data[i]._id);
-                    xdelete.html("delete");
+                    // xdelete.html("delete");
                     adelete.append(xdelete);
                     idiv.append(adelete);
                     ili.append(idiv);
