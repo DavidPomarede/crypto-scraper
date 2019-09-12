@@ -26,7 +26,7 @@ function displayScrape() {
                     var a = $("<a>");
                     a.attr("href", data[i].link);
                     a.attr("id", "link-" + data[i]._id);
-                    a.text("Link");
+                    a.html("<i class='fas fa-link'></i>");
                     cardActionDiv.append(a);
                     var saveArticle = $("<a>");
                     saveArticle.addClass("waves-effect waves-light btn save-button");
