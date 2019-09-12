@@ -1,5 +1,5 @@
 .nav-wrapper {
-    background-color:#01579b;
+    background-image: url("../images/header.png");
 }
 
 a#save {
@@ -9,9 +9,15 @@ a#save {
 .card-action a {
     color: black !important;
 }
-/* body {
-    background-image: url("../images/stardust.png");
-} */
+body {
+    background-image: url("../images/dot-grid.png");
+}
+
+#mainTitle {
+    color:#fceb05;
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+}
 
 .delete-button {
     margin-left: 10px;
