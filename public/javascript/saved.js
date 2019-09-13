@@ -1,50 +1,60 @@
+
 function displaySaved() {
     $.getJSON("/saved/all", function (data) {
+
         $("#ccn-0").empty();
         $("#ccn-1").empty();
         $("#ccn-2").empty();
+
         $("#total-number").text(data.length);
+
         for (var i = 0; i < data.length; i++) {
-            var mainDiv = $("<div>");
-            mainDiv.addClass("card grey lighten-2");
-            mainDiv.attr("id", "main-" + data[i]._id);
-            var cardContentDiv = $("<div>");
-            cardContentDiv.addClass("card-content black-text");
-            var spanTitle = $("<span>");
-            spanTitle.addClass("card-title");
-            spanTitle.attr("data-id", data[i]._id);
-            spanTitle.attr("id", "title-" + data[i]._id);
-            spanTitle.text(data[i].title);
-            var p = $("<p>");
-            p.text(data[i].summary);
-            p.attr("id", "summary-" + data[i]._id);
-            cardContentDiv.append(spanTitle);
-            cardContentDiv.append(p);
-            var cardActionDiv = $("<div>");
-            cardActionDiv.addClass("card-action");
-            var a = $("<a>");
-            a.attr("href", data[i].link);
-            a.attr("id", "link-" + data[i]._id);
-            a.html("<i class='fas fa-link'></i>");
-            cardActionDiv.append(a);
-            var button = $("<a>");
-            button.addClass("waves-effect waves-light white btn create-note modal-trigger");
-            button.attr("data-id", data[i]._id);
-            button.attr("data-target", "notes");
-            button.text("Notes");
+
+            var articleDiv = $("<div>");
+            articleDiv.addClass("card yellow lighten-5");
+            articleDiv.attr("id", "main-" + data[i]._id);
+
+            var contentDiv = $("<div>");
+            contentDiv.addClass("card-content blue-text");
+
+            var titleDiv = $("<div>");
+            titleDiv.addClass("card-title");
+            titleDiv.attr("data-id", data[i]._id);
+            titleDiv.attr("id", "title-" + data[i]._id);
+            titleDiv.text(data[i].title);
+            contentDiv.append(titleDiv);
+
+            var summaryDiv = $("<p>");
+            summaryDiv.attr("id", "summary-" + data[i]._id);
+            summaryDiv.text(data[i].summary);
+            contentDiv.append(summaryDiv);
+
+            var cardAction = $("<div>");
+            cardAction.addClass("card-action");
+
+            var link = $("<a>");
+            link.attr("href", data[i].link);
+            link.attr("id", "link-" + data[i]._id);
+            link.html("<i class='fas fa-link'></i>");
+            cardAction.append(link);
+
+            var notesButton = $("<a>");
+            notesButton.addClass(" btn create-note modal-trigger");
+            notesButton.attr("data-id", data[i]._id);
+            notesButton.attr("data-target", "notes");
+            notesButton.text("Notes");
+
             var deleteArticle = $("<a>");
-            deleteArticle.addClass("waves-effect waves-light white btn delete-button");
+            deleteArticle.addClass(" btn delete-button");
             deleteArticle.attr("id", data[i]._id);
             deleteArticle.text("Delete");
-            var byline = $("<p>");
-            byline.text(data[i].byline);
-            cardActionDiv.append(byline);
-            cardActionDiv.append(button);
-            cardActionDiv.append(deleteArticle);
-            mainDiv.append(cardContentDiv);
-            mainDiv.append(cardActionDiv);
 
-            $("#ccn-" + String(i % 3)).append(mainDiv);
+            cardAction.append(notesButton);
+            cardAction.append(deleteArticle);
+            articleDiv.append(contentDiv);
+            articleDiv.append(cardAction);
+
+            $("#ccn-" + String(i % 3)).append(articleDiv);
         }
     });
 }
@@ -65,8 +75,8 @@ function deletenote(thisId) {
 }
 
 $(document).ready(function () {
-    $('.slider').slider();
-    $(".button-collapse").sideNav();
+    // $('.slider').slider();
+    // $(".button-collapse").sideNav();
     $('.modal').modal();
 
     // When click on savearticle button
@@ -75,13 +85,11 @@ $(document).ready(function () {
         var summary = $("#summary-" + thisId).text();
         var title = $("#title-" + thisId).text();
         var link = $("#link-" + thisId).attr('href');
-        var byline = $("#byline-" + thisId).text();
         var data = {
             "id": thisId,
             "summary": summary,
             "title": title,
             "link": link,
-            "byline": byline
         };
         $.ajax({
             type: "POST",
@@ -96,10 +104,6 @@ $(document).ready(function () {
     // When click on delete article button
     $(document).on('click', '.delete-button', function () {
         var thisId = $(this).attr("id");
-        var summary = $("#summary-" + thisId).text();
-        var title = $("#title-" + thisId).text();
-        var link = $("#link-" + thisId).attr('href');
-        var byline = $("#byline-" + thisId).text();
         var data = {
             "_id": thisId
         };

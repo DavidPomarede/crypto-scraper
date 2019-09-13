@@ -78,8 +78,7 @@ module.exports = function (app) {
     app.post("/save", function (req, res) {
         var result = {};
         result.id = req.body._id;
-        // result.summary = req.body.summary;
-        result.byline = req.body.byline;
+        result.summary = req.body.summary;
         result.title = req.body.title;
         result.link = req.body.link;
         var entry = new Save(result);
@@ -145,11 +144,11 @@ module.exports = function (app) {
     app.get("/notepopulate", function (req, res) {
         Note.find({
             "_id": req.params.id
-        }, function (error, doc) {
+        }, function (error, data) {
             if (error) {
                 console.log(error);
             } else {
-                res.send(doc);
+                res.send(data);
             }
         });
     });
@@ -159,13 +158,13 @@ module.exports = function (app) {
         result._id = req.body._id;
         Note.findOneAndRemove({
             '_id': req.body._id
-        }, function (err, doc) {
+        }, function (err, data) {
             if (err) {
                 console.log("error:", err);
                 res.json(err);
             }
             else {
-                res.json(doc);
+                res.json(data);
             }
         });
     });
