@@ -120,45 +120,45 @@ $(document).ready(function () {
     // create note
     $(document).on("click", ".create-note", function (data) {
         $("#savenote").attr("data-id", $(this).attr("data-id"));
-        let aid = $(this).attr("data-id");
-        let title = "Notes for the Article: " + aid;
+        var thisId = $(this).attr("data-id");
+        var noteTitle = "Notes for the Article: " + thisId;
         $("#display-title").empty();
-        $("#display-title").text(title);
+        $("#display-title").text(noteTitle);
         $("#textarea1").val("");
-        $.getJSON("/notes/" + aid, function (data) {
+        $.getJSON("/notes/" + thisId, function (data) {
             if(data.length) {
                 console.log(data);
-                let notetext = "Notes: " + data[0].body;
+                // let notetext = "Notes: " + data[0].body;
                 $("#display-note").empty();
-                let noteList = $("<ul>");
+                var noteList = $("<ul>");
                 noteList.addClass("collection with-header");
-                let hli = $("<li>");
-                hli.addClass("collection-header")
-                hli.text("Notes");
-                noteList.append(hli);
+                var listStructure = $("<li>");
+                listStructure.addClass("collection-header")
+                listStructure.text("Notes");
+                noteList.append(listStructure);
             
-                for (let i = 0; i < data.length; i++) {
-                    let ili = $("<li>");
-                    ili.attr("id", data[i]._id);
-                    ili.addClass("collection-item");
+                for (var i = 0; i < data.length; i++) {
+                    var listId = $("<li>");
+                    listId.attr("id", data[i]._id);
+                    listId.addClass("collection-item");
 
-                    let idiv = $("<div>");
-                    idiv.text(data[i].body);
+                    var noteDiv = $("<div>");
+                    noteDiv.text(data[i].body);
 
-                    let adelete = $("<a>");
-                    adelete.addClass("secondary-content");
-                    adelete.html("<i class='far fa-trash-alt'></i>");
-                    adelete.attr("note-id", data[i]._id);
-                    adelete.attr("href", "#");
-                    adelete.attr("onclick", 'deletenote("' + data[i]._id + '")');
-                    let xdelete = $("<i>");
+                    var delNote = $("<a>");
+                    delNote.addClass("secondary-content");
+                    delNote.html("<i class='far fa-trash-alt'></i>");
+                    delNote.attr("note-id", data[i]._id);
+                    delNote.attr("href", "#");
+                    delNote.attr("onclick", 'deletenote("' + data[i]._id + '")');
+                    var xdelete = $("<i>");
                     // xdelete.addClass("material-icons");
                     xdelete.attr("note-id", data[i]._id);
                     // xdelete.html("delete");
-                    adelete.append(xdelete);
-                    idiv.append(adelete);
-                    ili.append(idiv);
-                    noteList.append(ili);
+                    delNote.append(xdelete);
+                    noteDiv.append(delNote);
+                    listId.append(noteDiv);
+                    noteList.append(listId);
                 }
                 $("#display-note").append(noteList);
             } else {
