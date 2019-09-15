@@ -75,11 +75,9 @@ function deletenote(thisId) {
 }
 
 $(document).ready(function () {
-    // $('.slider').slider();
-    // $(".button-collapse").sideNav();
+
     $('.modal').modal();
 
-    // When click on savearticle button
     $(document).on('click', '.save-button', function () {
         var thisId = $(this).attr("id");
         var summary = $("#summary-" + thisId).text();
@@ -101,7 +99,7 @@ $(document).ready(function () {
             }
         });
     });
-    // When click on delete article button
+
     $(document).on('click', '.delete-button', function () {
         var thisId = $(this).attr("id");
         var data = {
@@ -117,7 +115,7 @@ $(document).ready(function () {
         })
     });
 
-    // create note
+
     $(document).on("click", ".create-note", function (data) {
         $("#savenote").attr("data-id", $(this).attr("data-id"));
         var thisId = $(this).attr("data-id");
@@ -127,8 +125,7 @@ $(document).ready(function () {
         $("#textarea1").val("");
         $.getJSON("/notes/" + thisId, function (data) {
             if(data.length) {
-                console.log(data);
-                // let notetext = "Notes: " + data[0].body;
+
                 $("#display-note").empty();
                 var noteList = $("<ul>");
                 noteList.addClass("collection with-header");
@@ -151,11 +148,10 @@ $(document).ready(function () {
                     delNote.attr("note-id", data[i]._id);
                     delNote.attr("href", "#");
                     delNote.attr("onclick", 'deletenote("' + data[i]._id + '")');
-                    var xdelete = $("<i>");
-                    // xdelete.addClass("material-icons");
-                    xdelete.attr("note-id", data[i]._id);
-                    // xdelete.html("delete");
-                    delNote.append(xdelete);
+                    var deleteId = $("<i>");
+                    deleteId.attr("note-id", data[i]._id);
+
+                    delNote.append(deleteId);
                     noteDiv.append(delNote);
                     listId.append(noteDiv);
                     noteList.append(listId);
