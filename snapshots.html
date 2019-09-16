@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CryptoNews Scraper</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel|Patua+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="/javascript/home.js"></script>
+    <script type="text/javascript" src="/javascript/saved.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="row justify-content-md-center">
+                    <div class="col col-sm-1">
+                        <a class="navbar-brand" href="#" id="mainTitle">CryptoNews Scraper</a>
+                    </div>
+                    <div class="col col-sm-1">
+                        <a class="nav-link navItem" onclick="displaySaved()" href="#" padding>Saved Items</a>
+                    </div>
+                    <div class="col col-sm-1">
+                        <button data-target="scrape-article" class="btn black modal-trigger navItem" onclick="scrape()">Scrape Articles</button>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="row">
+            <br>
+                <div class="col m1"></div>
+            <div class="col m5">
+        <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script><div class="coinmarketcap-currency-widget" data-currencyid="1" data-base="USD" data-secondary="" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-statsticker="true" data-stats="USD"></div>
+        </div>
+
+
+
+                <div class="col m5">
+                        <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script><div class="coinmarketcap-currency-widget" data-currencyid="1027" data-base="USD" data-secondary="" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-statsticker="true" data-stats="USD"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m4 l4" id="ccn-0">
+            </div>
+            <div class="col s12 m4 l4" id="ccn-1">
+            </div>
+            <div class="col s12 m4 l4" id="ccn-2">
+            </div>
+        </div>
+
+
+
+        <div id="scrape-article" class="modal">
+            <div class="modal-content">
+                <h4>Number of Articles Scraped</h4>
+                <h4 id="total-number"></h4>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="modal-action modal-close btn btn-outline-primary">Close</a>
+            </div>
+            </div>
+        </div>
+
+
+    <div class="modal" id="notes" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="display-title" class="modal-title"></h4>
+              </button>
+            </div>
+            <div class="modal-body">
+                    <form>
+                            <h4 id="display-title"></h4>
+                            <div id="display-note"></div>
+                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                            <label for="textarea1">write a new note</label>
+                    </form>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-action modal-close btn btn-outline-primary" id="savenote">Save</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+</body>
+
+</html>
