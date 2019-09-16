@@ -31,6 +31,7 @@ function scrape() {
                     cardActionDiv.addClass("card-action");
 
                     var linkRef = $("<a>");
+                    // linkRef.addClass("btn btn-outline-primary active");
                     linkRef.attr("href", data[i].link);
                     linkRef.attr("id", "link-" + data[i]._id);
                     linkRef.html("<i class='fas fa-link'></i>");
