@@ -12,29 +12,16 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 
 
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(express.static("./public"));
+app.use(logger("dev"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static("public"));
 
-// mongoose
-mongoose.Promise = Promise;
-var dbConnect = process.env.MONGODB_URI || "mongodb://localhost/ccnScrape";
-if(process.env.MONGODB_URI) {
-    mongoose.connect(process.env.MONGODB_URI)
-} else {
-    mongoose.connect(dbConnect);
-}
 
-var db = mongoose.connection;
-db.on('error',function(err){
-    console.log('Mongoose Error',err);
-});
-db.once('open', function(){
-    console.log("Mongoose connection is successful");
-});
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true },  { useUnifiedTopology: true } );
+
 
 var exphbs = require("express-handlebars");
 
