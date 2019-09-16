@@ -30,20 +30,21 @@ function scrape() {
                     var cardActionDiv = $("<div>");
                     cardActionDiv.addClass("card-action");
 
-                    var a = $("<a>");
-                    a.attr("href", data[i].link);
-                    a.attr("id", "link-" + data[i]._id);
-                    a.html("<i class='fas fa-link'></i>");
-                    cardActionDiv.append(a);
+                    var linkRef = $("<a>");
+                    linkRef.attr("href", data[i].link);
+                    linkRef.attr("id", "link-" + data[i]._id);
+                    linkRef.html("<i class='fas fa-link'></i>");
+                    cardActionDiv.append(linkRef);
 
                     var saveArticle = $("<button>");
-                    saveArticle.addClass("btn btn-primary active save-button");
+                    saveArticle.addClass("btn btn-outline-primary active save-button");
                     saveArticle.attr("id", data[i]._id);
                     saveArticle.attr("type", "button");
                     saveArticle.attr("data-toggle", "button");
                     saveArticle.attr("aria-pressed", "false");
                     saveArticle.attr("autocomplete", "off");
-                    saveArticle.text("Save Article");
+                    saveArticle.html("<i class='fas fa-save'></i>");
+                    // saveArticle.text("Save");
                     cardActionDiv.append(saveArticle);
 
                     articleDiv.append(contentDiv);

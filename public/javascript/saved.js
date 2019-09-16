@@ -16,6 +16,7 @@ function displaySaved() {
 
             var contentDiv = $("<div>");
             contentDiv.addClass("card-content blue-text");
+            articleDiv.append(contentDiv);
 
             var titleDiv = $("<div>");
             titleDiv.addClass("card-title");
@@ -24,13 +25,15 @@ function displaySaved() {
             titleDiv.text(data[i].title);
             contentDiv.append(titleDiv);
 
-            var summaryDiv = $("<p>");
+
+            var summaryDiv = $("<div>");
             summaryDiv.attr("id", "summary-" + data[i]._id);
             summaryDiv.text(data[i].summary);
             contentDiv.append(summaryDiv);
 
             var cardAction = $("<div>");
             cardAction.addClass("card-action");
+            articleDiv.append(cardAction);
 
             var link = $("<a>");
             link.attr("href", data[i].link);
@@ -39,20 +42,19 @@ function displaySaved() {
             cardAction.append(link);
 
             var notesButton = $("<a>");
-            notesButton.addClass(" btn create-note modal-trigger");
+            notesButton.addClass(" btn create-note btn-outline-primary modal-trigger ");
             notesButton.attr("data-id", data[i]._id);
             notesButton.attr("data-target", "notes");
             notesButton.text("Notes");
+            // notesButton.html("<i class='fa fa-pencil'></i>");
+            cardAction.append(notesButton);
 
             var deleteArticle = $("<a>");
-            deleteArticle.addClass(" btn delete-button");
+            deleteArticle.addClass(" btn btn-outline-primary delete-button");
             deleteArticle.attr("id", data[i]._id);
-            deleteArticle.text("Delete");
-
-            cardAction.append(notesButton);
+            // deleteArticle.text("Delete");
+            deleteArticle.html("<i class='fas fa-ban'></i>");
             cardAction.append(deleteArticle);
-            articleDiv.append(contentDiv);
-            articleDiv.append(cardAction);
 
             $("#ccn-" + String(i % 3)).append(articleDiv);
         }
@@ -159,7 +161,7 @@ $(document).ready(function () {
                 var noteList = $("<ul>");
                 noteList.addClass("collection with-header");
                 var listStructure = $("<li>");
-                listStructure.addClass("collection-header")
+                listStructure.addClass("collection-header");
                 listStructure.text("Notes");
                 noteList.append(listStructure);
             
