@@ -54,7 +54,8 @@
             </div>
         </div>
 
-        <!-- Modal for scraping article information-->
+
+
         <div id="scrape-article" class="modal">
             <div class="modal-content">
                 <h4>Number of Articles Scraped</h4>
@@ -63,23 +64,32 @@
             <div class="modal-footer">
                 <a href="#" class="modal-action modal-close waves-effect waves-yellow btn">Close</a>
             </div>
+            </div>
         </div>
-    </div>
 
-    <!-- Modal for creating a note -->
-    <div id="notes" class="modal">
-        <div class="modal-content">
-            <form>
-                <h4 id="display-title"></h4>
-                <div id="display-note"></div>
-                <textarea id="textarea1" class="materialize-textarea"></textarea>
-                <label for="textarea1">Notes:</label>
-            </form>
+
+    <div class="modal" id="notes" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="display-title" class="modal-title"></h4>
+              </button>
+            </div>
+            <div class="modal-body">
+                    <form>
+                            <h4 id="display-title"></h4>
+                            <div id="display-note"></div>
+                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                            <label for="textarea1">write a new note</label>
+                    </form>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-action modal-close  btn btn-primary" id="savenote">Save</a>
+
+            </div>
+          </div>
         </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close  btn" id="savenote">Save</a>
-        </div>
-    </div>
+      </div>
 
 </body>
 
