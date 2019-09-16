@@ -53,8 +53,8 @@ module.exports = function (app) {
                 "_id": req.params.id
             })
             .populate("note")
-            .then(function(dbNote) {
-                res.json(dbNote);
+            .then(function(dbArticle) {
+                res.json(dbArticle);
             })
             .catch(function(err) {
                 res.json(err);
