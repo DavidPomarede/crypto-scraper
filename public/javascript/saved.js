@@ -4,7 +4,7 @@ function displaySaved() {
 
         $("#ccn-0").empty();
         $("#ccn-1").empty();
-        $("#ccn-2").empty();
+        // $("#ccn-2").empty();
 
         $("#total-number").text(data.length);
 
@@ -56,7 +56,7 @@ function displaySaved() {
             deleteArticle.html("<i class='fas fa-ban'></i>");
             cardAction.append(deleteArticle);
 
-            $("#ccn-" + String(i % 3)).append(articleDiv);
+            $("#ccn-" + String(i % 2)).append(articleDiv);
         }
     });
 }
@@ -159,10 +159,10 @@ $(document).ready(function () {
 
                 $("#display-note").empty();
                 var noteList = $("<ul>");
-                noteList.addClass("collection with-header");
+                noteList.addClass("collection with-header center");
                 var listStructure = $("<li>");
                 listStructure.addClass("collection-header");
-                listStructure.text("Notes");
+                listStructure.text("Your past notes:");
                 noteList.append(listStructure);
             
                 for (var i = 0; i < data.length; i++) {

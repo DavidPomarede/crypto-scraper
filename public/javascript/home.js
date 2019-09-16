@@ -4,7 +4,7 @@ function scrape() {
             $.getJSON("/articles", function (data) {
                 $("#ccn-0").empty();
                 $("#ccn-1").empty();
-                $("#ccn-2").empty();
+                // $("#ccn-2").empty();
                 $("#total-number").text(data.length);
 
                 for (var i = 0; i < data.length; i++) {
@@ -50,7 +50,7 @@ function scrape() {
 
                     articleDiv.append(contentDiv);
                     articleDiv.append(cardActionDiv);
-                    $("#ccn-" + String(i % 3)).append(articleDiv);
+                    $("#ccn-" + String(i % 2)).append(articleDiv);
                 }
             });
         }
