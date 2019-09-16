@@ -53,25 +53,23 @@ module.exports = function (app) {
                 "_id": req.params.id
             })
             .populate("note")
-            .exec(function (error, doc) {
-                if (error) {
-                    console.log(error)
-                } else {
-                    res.send(doc);
-                }
+            .then(function(dbNote) {
+                res.json(dbNote);
+            })
+            .catch(function(err) {
+                res.json(err);
             });
     });
 
     app.get("/saved/all", function (req, res) {
         Save.find({})
             .populate("note")
-            .exec(function (error, data) {
-                if (error) {
-                    console.log(error);
-                    res.json({"code" : "error"});
-                } else {
-                    res.json(data);
-                }
+
+            .then(function(dbSaved) {
+                res.json(dbSaved);
+            })
+            .catch(function(err) {
+                res.json(err);
             });
     });
 
@@ -115,13 +113,13 @@ module.exports = function (app) {
             Note.find({
                 "article_id": req.params.id
             })
-            .exec(function (error, doc) {
-                if (error) {
-                    console.log(error)
-                } else {
-                    res.send(doc);
-                }
+            .then(function(dbNote) {
+                res.json(dbNote);
+            })
+            .catch(function(err) {
+                res.json(err);
             });
+
         }
     });
 
