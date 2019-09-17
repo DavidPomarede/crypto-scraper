@@ -2,9 +2,8 @@ function scrape() {
     $.getJSON("/scrape", function (req) {
         if (req.code == "success") {
             $.getJSON("/articles", function (data) {
-                $("#ccn-0").empty();
-                $("#ccn-1").empty();
-                // $("#ccn-2").empty();
+                $("#article").empty();
+
                 $("#total-number").text(data.length);
 
                 for (var i = 0; i < data.length; i++) {
@@ -31,7 +30,6 @@ function scrape() {
                     cardActionDiv.addClass("card-action");
 
                     var linkRef = $("<a>");
-                    // linkRef.addClass("btn btn-outline-primary active");
                     linkRef.attr("href", data[i].link);
                     linkRef.attr("id", "link-" + data[i]._id);
                     linkRef.html("<i class='fas fa-link'></i>");
@@ -45,12 +43,11 @@ function scrape() {
                     saveArticle.attr("aria-pressed", "false");
                     saveArticle.attr("autocomplete", "off");
                     saveArticle.html("<i class='fas fa-save'></i>");
-                    // saveArticle.text("Save");
                     cardActionDiv.append(saveArticle);
 
                     articleDiv.append(contentDiv);
                     articleDiv.append(cardActionDiv);
-                    $("#ccn-" + String(i % 2)).append(articleDiv);
+                    $("#article").append(articleDiv);
                 }
             });
         }

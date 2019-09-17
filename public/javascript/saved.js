@@ -2,9 +2,7 @@
 function displaySaved() {
     $.getJSON("/saved/all", function (data) {
 
-        $("#ccn-0").empty();
-        $("#ccn-1").empty();
-        // $("#ccn-2").empty();
+        $("#article").empty();
 
         $("#total-number").text(data.length);
 
@@ -46,17 +44,15 @@ function displaySaved() {
             notesButton.attr("data-id", data[i]._id);
             notesButton.attr("data-target", "notes");
             notesButton.text("Notes");
-            // notesButton.html("<i class='fa fa-pencil'></i>");
             cardAction.append(notesButton);
 
             var deleteArticle = $("<a>");
             deleteArticle.addClass(" btn btn-outline-primary delete-button");
             deleteArticle.attr("id", data[i]._id);
-            // deleteArticle.text("Delete");
             deleteArticle.html("<i class='fas fa-ban'></i>");
             cardAction.append(deleteArticle);
 
-            $("#ccn-" + String(i % 2)).append(articleDiv);
+            $("#article").append(articleDiv);
         }
     });
 }
@@ -117,35 +113,6 @@ $(document).ready(function () {
         })
     });
 
-
-//     // When you click the savenote button
-// $(document).on("click", ".create-note", function() {
-//     // Grab the id associated with the article from the submit button
-//     var thisId = $(this).attr("data-id");
-  
-//     // Run a POST request to change the note, using what's entered in the inputs
-//     $.ajax({
-//       method: "GET",
-//       url: "/notes/" + thisId,
-//       data: {
-//         // Value taken from title input
-//         title: $("#titleinput").val(),
-//         // Value taken from note textarea
-//         body: $("#bodyinput").val()
-//       }
-//     })
-//       // With that done
-//       .then(function(data) {
-//         // Log the response
-//         console.log(data);
-//         // Empty the notes section
-//         $("#notes").empty();
-//       });
-  
-//     // Also, remove the values entered in the input and textarea for note entry
-//     $("#titleinput").val("");
-//     $("#bodyinput").val("");
-//   });
 
     $(document).on("click", ".create-note", function (data) {
         $("#savenote").attr("data-id", $(this).attr("data-id"));
